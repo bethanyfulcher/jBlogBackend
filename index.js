@@ -21,8 +21,10 @@ app.use(cors())
 
 const userRoutes = require("./controllers/user");
 app.use(userRoutes);
-const blogs = require("./controllers/blog");
-app.use("/api/blogs",blogs)
+const tankRoutes = require("./controllers/tank");
+app.use("/api/tanks",tankRoutes);
+const fishRoutes = require("./controllers/fish");
+app.use("/api/fishes", fishRoutes);
 
 db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {

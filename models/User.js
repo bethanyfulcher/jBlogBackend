@@ -21,7 +21,8 @@ module.exports = function(sequelize, DataTypes) {
     })
 
     User.associate = function(models) {
-        User.hasMany(models.Blog);
+        User.hasMany(models.Tank);
+        User.hasMany(models.Fish);
     };
 
     User.beforeCreate(function (user) {
