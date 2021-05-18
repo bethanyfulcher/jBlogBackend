@@ -28,12 +28,31 @@ const authenticateMe = (req)=> {
     return data;
 }
 
-router.get("/",(req,res)=>{
-    db.Blog.findAll().then(blogs => {
-        res.json(blogs)
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
-})
+// router.get("/",(req,res)=>{
+//     db.Blog.findAll().then(blogs => {
+//         res.json(blogs)
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     })
+// })
+
+// router.post("/",(req,res)=>{
+//     const userData = authenticateMe(req);
+//     if(!userData) {
+//         res.status(403).send("you are not logged in")
+//     } else {
+//         db.Blog.findOne({
+//             where:{
+//                 id:req.body.blog
+//             }
+//         }).then(blog=> {
+//             if(blog.UserId===userData.id) {
+//                 db.Blog.create({
+                    
+//                 })
+//             }
+//         })
+//     }
+// })
 
