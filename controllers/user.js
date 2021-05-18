@@ -55,7 +55,7 @@ router.post('/login', (req,res) => {
         where: {
             email: req.body.email
         },
-        include: [db.Tank]
+        include: [db.Blog]
     }).then(user => {
         if(!user) {
             return res.status(404).send('no such user')
@@ -77,21 +77,18 @@ router.post('/login', (req,res) => {
     })
 })
 
-router.get("/user/:id/tanks/fishes", (req,res)=> {
+router.get("/user/:id/blogs", (req,res)=> {
     let userData = authenticateMe(req);
     db.User.findOne({
         where:{
             id:req.params.id
-        },
-        include:[db.Fish,{
-            model: db.Tank,
-            include:[db.Fish]
-        }]
+        }
     }).then(user=>{
         res.json({
             name: user.name,
-            Fishes:user.Fishes,
-            Tanks: user.Tanks,
+            Blogs: user.Blogs,
+            // Fishes:user.Fishes,
+            // Tanks: user.Tanks,
             isMyPage:userData&&userData.id===user.id
         })
     })
@@ -105,8 +102,7 @@ router.get("/secretclub", (req,res) => {
                 id: tokenData.id
             },
             include: [{
-                model:db.Tank,
-                include:[db.Fish]
+                model:db.Blog,
             }]
         }).then(user=>{
             res.json(user)
