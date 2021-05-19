@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
     };
 
     return Blog;
-}
+};
 
 // module.exports = function(sequelize, DataTypes) {
 //     var Tank = sequelize.define('Tank', {
