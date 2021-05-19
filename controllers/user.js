@@ -82,7 +82,10 @@ router.get("/user/:id/blogs", (req,res)=> {
     db.User.findOne({
         where:{
             id:req.params.id
-        }
+        },
+        include: [{
+            model: db.Blog
+        }]
     }).then(user=>{
         res.json({
             name: user.name,
